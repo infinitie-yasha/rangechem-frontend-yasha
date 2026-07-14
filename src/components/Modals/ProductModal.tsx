@@ -13,7 +13,7 @@ import {
   RadioGroup,
   Radio,
 } from "@heroui/react";
-import { ShoppingCart, Plus, Minus, Star, Users } from "lucide-react";
+import { ShoppingCart, Plus, Minus, Star, Users, Snowflake } from "lucide-react";
 import RatingStars from "../RatingStars";
 import {
   Product,
@@ -442,6 +442,24 @@ const SimpleProductModal: FC<ProductModalProps> = ({
                 >
                   {product.title ?? t("product_modal.untitled")}
                 </Link>
+
+                {/* Cold Storage & Temperature */}
+                {product.is_cold_storage && (
+                  <div className="flex items-center gap-1.5 py-1 flex-wrap">
+                    <span className="text-blue-600 dark:text-blue-400 font-semibold text-[10px] bg-blue-50 dark:bg-blue-900/20 px-1.5 py-0.5 rounded flex items-center gap-1 border border-blue-100 dark:border-blue-900/30">
+                      <Snowflake size={11} className="animate-pulse shrink-0" />
+                      {t("cartItems.coldStorage", "Cold Storage")}
+                    </span>
+                    {product.temp_min !== null && product.temp_max !== null && (
+                      <span className="text-foreground/70 text-[10px] font-semibold">
+                        {t("product.temperature_range", "Store at: {{min}}°C to {{max}}°C", {
+                          min: product.temp_min,
+                          max: product.temp_max,
+                        })}
+                      </span>
+                    )}
+                  </div>
+                )}
 
                 {/* Social Proof - Cart Count */}
                 {cartCount > 0 && (

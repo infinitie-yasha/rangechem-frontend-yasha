@@ -10,7 +10,7 @@ import {
   addToast,
   Tooltip,
 } from "@heroui/react";
-import { Clock, Bookmark, Star, Eye } from "lucide-react";
+import { Clock, Bookmark, Star, Eye, Snowflake } from "lucide-react";
 import RatingStars from "../RatingStars";
 import { Product } from "@/types/ApiResponse";
 import dynamic from "next/dynamic";
@@ -291,6 +291,20 @@ const ProductCard: FC<ProductCardProps> = ({
                         "product.prescription_optional",
                         "Prescription optional",
                       )}
+                </div>
+              </div>
+            )}
+
+            {/* Cold Storage Badge - Bottom Left (stacked above prescription badge if needed) */}
+            {!!product.is_cold_storage && (
+              <div
+                className={`absolute z-20 ${
+                  product.is_attachment_required ? "bottom-[18px]" : "bottom-0"
+                } left-0`}
+              >
+                <div className="inline-flex items-center gap-0.5 px-2 py-0.5 text-[9.5px] font-semibold text-white tracking-wide rounded-tr-md bg-blue-500 dark:bg-blue-600 whitespace-nowrap shadow-sm">
+                  <Snowflake size={10} className="animate-pulse" />
+                  {t("cartItems.coldStorage", "Cold Storage")}
                 </div>
               </div>
             )}

@@ -798,6 +798,8 @@ export const getProducts = async (
   } = {},
 ): Promise<PaginatedResponse<Product[], { keywords: string[] }>> => {
   try {
+    console.log('in side the getProducts function');
+    
     const response = await api.get("/delivery-zone/products", {
       params,
     });
@@ -852,6 +854,8 @@ export const getProductBySlug = async (
   } = {},
 ): Promise<ApiResponse<Product>> => {
   try {
+    console.log('getting product by slug');
+    
     const { slug, ...rest } = params;
     const response = await api.get(`/products/${slug}`, {
       params: rest,
@@ -1397,10 +1401,29 @@ export const createOrder = async (
             "Content-Type": "multipart/form-data",
           }
         : undefined,
+      validateStatus: (status) => (status >= 200 && status < 300) || status === 422,
     });
+
+    if (response.status === 422) {
+      return {
+        success: false,
+        message: response.data.message || "An error occurred.",
+        errors: response.data.errors,
+        data: null,
+      } as any;
+    }
+
     return response.data;
   } catch (error) {
     console.error("API error:", error);
+    if (axios.isAxiosError(error) && error.response?.data) {
+      return {
+        success: false,
+        message: error.response.data.message || "An error occurred.",
+        errors: error.response.data.errors,
+        data: null,
+      } as any;
+    }
     return fallbackApiRes;
   }
 };

@@ -3,7 +3,7 @@ export type ApiResponse<T> = {
   message: string;
   access_token?: string;
   data?: T | null;
-  errors?: string[];
+  errors?: any;
   total?: number;
 };
 
@@ -476,6 +476,8 @@ export interface Product {
   attachment_mode?: "required" | "optional" | string | null;
   is_cold_storage?: boolean;
   is_deliverable?: boolean;
+  temp_min?: number | null;
+  temp_max?: number | null;
 }
 
 export interface FavoriteItem {
@@ -584,6 +586,7 @@ export interface Order {
   delivery_boy_phone: number | string;
   delivery_boy_profile: string;
   is_delivery_feedback_given: boolean;
+  is_scheduled_order?: boolean;
 
   delivery_feedback: {
     id: number;
@@ -1146,6 +1149,8 @@ export interface CartItem {
     attachment_mode?: string;
     is_cold_storage?: boolean;
     is_deliverable?: boolean;
+    temp_min?: number | null;
+    temp_max?: number | null;
   };
   variant: {
     id: number;

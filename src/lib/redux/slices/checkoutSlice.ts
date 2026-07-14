@@ -8,6 +8,7 @@ export interface CheckoutState {
   rushDelivery: boolean;
   promoCode: string;
   deliveryScheduleDate: string | null;
+  isDeliverySchedulingShown: boolean;
 }
 
 const initialState: CheckoutState = {
@@ -17,6 +18,7 @@ const initialState: CheckoutState = {
   rushDelivery: false,
   promoCode: "",
   deliveryScheduleDate: null,
+  isDeliverySchedulingShown: false,
 };
 
 const checkoutSlice = createSlice({
@@ -41,6 +43,9 @@ const checkoutSlice = createSlice({
     setDeliveryScheduleDate: (state, action: PayloadAction<string | null>) => {
       state.deliveryScheduleDate = action.payload;
     },
+    setIsDeliverySchedulingShown: (state, action: PayloadAction<boolean>) => {
+      state.isDeliverySchedulingShown = action.payload;
+    },
   },
 });
 
@@ -51,5 +56,6 @@ export const {
   setRusDelivery,
   setPromoCode,
   setDeliveryScheduleDate,
+  setIsDeliverySchedulingShown,
 } = checkoutSlice.actions;
 export default checkoutSlice.reducer;

@@ -39,7 +39,8 @@ const PER_PAGE = 20;
 
 // SWR fetcher for client
 const fetcher = async (slug: string, store?: string) => {
-  const { lat = "", lng = "" } = getCookie("userLocation") as UserLocation;
+  const userLocation = getCookie<UserLocation>("userLocation");
+  const { lat = "", lng = "" } = userLocation || {};
   const res = await getProductBySlug({
     slug,
     latitude: lat,
@@ -54,7 +55,8 @@ const fetcher = async (slug: string, store?: string) => {
 
 // SWR fetcher for similar products
 const similarProductsFetcher = async (slug: string) => {
-  const { lat = "", lng = "" } = getCookie("userLocation") as UserLocation;
+  const userLocation = getCookie<UserLocation>("userLocation");
+  const { lat = "", lng = "" } = userLocation || {};
 
   const res = await getProducts({
     exclude_product: slug,
@@ -80,8 +82,8 @@ const ProductPage: NextPageWithLayout<ProductPageProps> = ({
   const { t } = useTranslation();
 
   // Get slug from router when SSR is false
-  const productSlug = slug || (router.query.slug as string);
-  const storeSlug = router.query.store as string | undefined;
+  const productSlug = slug || (router.isReady ? (router.query.slug as string) : undefined);
+  const storeSlug = router.isReady ? (router.query.store as string | undefined) : undefined;
 
   const {
     data: product,
@@ -93,7 +95,7 @@ const ProductPage: NextPageWithLayout<ProductPageProps> = ({
     {
       fallbackData: isSSR() ? initialProduct : undefined,
       revalidateOnFocus: false,
-      revalidateOnMount: !isSSR() && (!!getCookie("userLocation") || !!initialProduct),
+      revalidateOnMount: isSSR() ? false : true,
     },
   );
 
@@ -107,7 +109,7 @@ const ProductPage: NextPageWithLayout<ProductPageProps> = ({
     {
       fallbackData: isSSR() ? initialSimilarProducts : undefined,
       revalidateOnFocus: false,
-      revalidateOnMount: !isSSR() && (!!getCookie("userLocation") || !!initialSimilarProducts),
+      revalidateOnMount: isSSR() ? false : true,
     },
   );
 
@@ -257,7 +259,11 @@ const ProductPage: NextPageWithLayout<ProductPageProps> = ({
         />
         {/* Show when Main Product Is  Found */}
 
-        {!isLoading && isProductMissing ? (
+        {!router.isReady ? (
+          <div className="min-h-screen flex items-center justify-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+          </div>
+        ) : !isLoading && isProductMissing ? (
           <NoProductsFound
             icon={ShoppingCart}
             title={t("no_product_found")}

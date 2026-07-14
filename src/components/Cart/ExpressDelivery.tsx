@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 const ExpressDelivery: React.FC = () => {
-  const { selectedAddress } = useSelector((state: RootState) => state.checkout);
+  const { selectedAddress, isDeliverySchedulingShown } = useSelector((state: RootState) => state.checkout);
   const isLoading = useSelector((state: RootState) => state.cart.isLoading);
 
   const [isRushEnabled, setIsRushEnabled] = useState(false);
@@ -17,6 +17,10 @@ const ExpressDelivery: React.FC = () => {
   const { t } = useTranslation();
 
   const dispatch = useDispatch();
+
+  if (isDeliverySchedulingShown) {
+    return null;
+  }
 
   const handleRushSwitchToggle = async (checked: boolean) => {
     setIsRushEnabled(checked);

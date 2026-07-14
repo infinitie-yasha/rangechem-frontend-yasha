@@ -4,8 +4,10 @@ import { RootState } from "@/lib/redux/store";
 import {
   setDeliveryScheduleDate,
   setRusDelivery,
+  setIsDeliverySchedulingShown,
 } from "@/lib/redux/slices/checkoutSlice";
 import { getStoreSchedulingLimit } from "@/routes/api";
+import { updateCartData } from "@/helpers/updators";
 import { StoreSchedulingLimit } from "@/types/ApiResponse";
 import { Card, CardBody, Spinner, DatePicker } from "@heroui/react";
 import { CalendarDays } from "lucide-react";
@@ -60,9 +62,28 @@ const DeliveryScheduling: FC = () => {
       if (!isClosed) {
         // Store is online: clear scheduled delivery date so they checkout normally
         dispatch(setDeliveryScheduleDate(null));
+      } else {
+        // If store is closed, we must turn off rush delivery
+        if (rushDelivery) {
+          dispatch(setRusDelivery(false));
+          updateCartData(true, false);
+        }
       }
     }
-  }, [limitData, isClosed, dispatch]);
+  }, [limitData, isClosed, dispatch, rushDelivery]);
+
+  // Sync showing state to Redux checkout slice
+  useEffect(() => {
+    if (limitData) {
+      const showScheduling = maxDays > 0 && isClosed;
+      dispatch(setIsDeliverySchedulingShown(showScheduling));
+    } else {
+      dispatch(setIsDeliverySchedulingShown(false));
+    }
+    return () => {
+      dispatch(setIsDeliverySchedulingShown(false));
+    };
+  }, [limitData, maxDays, isClosed, dispatch]);
 
   const selectDate = (dateStr: string) => {
     dispatch(setDeliveryScheduleDate(dateStr));

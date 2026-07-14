@@ -302,6 +302,11 @@ const CartItems: FC<CartItemsProps> = ({ items = [], currencySymbol = "" }) => {
                               <span className="text-blue-600 dark:text-blue-400 font-semibold text-[10px] bg-blue-50 dark:bg-blue-900/20 px-1.5 py-0.5 rounded whitespace-nowrap flex items-center gap-1">
                                 <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
                                 {t("cartItems.coldStorage", "Cold Storage")}
+                                {item.product.temp_min !== null && item.product.temp_max !== null && (
+                                  <span className="opacity-90 font-medium ml-1">
+                                    ({item.product.temp_min}°C to {item.product.temp_max}°C)
+                                  </span>
+                                )}
                               </span>
                               {!item.product.is_deliverable && (
                                 <span className="text-danger-500 font-semibold text-[10px] bg-danger-50 dark:bg-danger-900/20 px-1.5 py-0.5 rounded whitespace-nowrap flex items-center gap-1">

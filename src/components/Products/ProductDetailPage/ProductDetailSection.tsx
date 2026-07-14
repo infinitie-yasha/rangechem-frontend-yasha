@@ -7,6 +7,7 @@ import {
   Store,
   Users,
   Share2,
+  Snowflake,
 } from "lucide-react";
 import { FC, useEffect, useState } from "react";
 import QtyInput from "./QtyInput";
@@ -288,6 +289,23 @@ const ProductDetailSection: FC<ProductDetailSectionProps> = ({
           </>
         )}
       </div>
+
+      {initialProduct.is_cold_storage && (
+        <div className="flex items-center gap-2 py-1 flex-wrap">
+          <span className="text-blue-600 dark:text-blue-400 font-semibold text-xs bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded-md flex items-center gap-1.5 border border-blue-100 dark:border-blue-900/30 shadow-xs">
+            <Snowflake size={14} className="animate-pulse shrink-0" />
+            {t("cartItems.coldStorage", "Cold Storage")}
+          </span>
+          {initialProduct.temp_min !== null && initialProduct.temp_max !== null && (
+            <span className="text-foreground/70 text-xs font-semibold">
+              {t("product.temperature_range", "Store at: {{min}}°C to {{max}}°C", {
+                min: initialProduct.temp_min,
+                max: initialProduct.temp_max,
+              })}
+            </span>
+          )}
+        </div>
+      )}
 
       {cartCount > 0 && (
         <div className="flex items-center gap-1.5 py-1">

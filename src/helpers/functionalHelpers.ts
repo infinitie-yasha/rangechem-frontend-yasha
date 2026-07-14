@@ -640,8 +640,17 @@ export const handleCheckout = async (
       document.getElementById("confetti-btn")?.click();
       resetCheckOutState();
     } else {
+      let errorDescription = "";
+      if (response.errors && typeof response.errors === "object") {
+        const errorMessages = Object.values(response.errors).flat().filter(Boolean);
+        if (errorMessages.length > 0) {
+          errorDescription = errorMessages.join(" ");
+        }
+      }
+
       addToast({
         title: response.message || i18n.t("checkout.error_title"),
+        description: errorDescription || undefined,
         color: "danger",
       });
       console.error(response.message || i18n.t("checkout.error_console"));

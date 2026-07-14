@@ -29,7 +29,7 @@ const DeliveryInfo: FC<DeliveryInfoProps> = ({
         </CardHeader>
         <CardBody className="pt-0">
           <div className="space-y-2 text-xs">
-            {buttonConfig.deliveryTime ? (
+            {buttonConfig.deliveryTime && !order.is_scheduled_order ? (
               <div className="flex justify-between">
                 <span className="text-gray-600 dark:text-gray-300">
                   {t("estimatedDeliveryTime")}
