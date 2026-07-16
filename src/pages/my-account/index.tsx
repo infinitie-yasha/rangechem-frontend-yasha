@@ -43,6 +43,7 @@ import {
   updateEmail,
   updateUserData,
   verifyOtp,
+  getOrders,
 } from "@/routes/api";
 import { isSSR } from "@/helpers/getters";
 import ConfirmationModal from "@/components/Modals/ConfirmationModal";
@@ -54,7 +55,7 @@ import {
   handlePhoneLogin,
 } from "@/helpers/auth";
 import { useDispatch, useSelector } from "react-redux";
-import { userData } from "@/types/ApiResponse";
+import { userData, Order } from "@/types/ApiResponse";
 import { RootState } from "@/lib/redux/store";
 import { setUserDataRedux } from "@/lib/redux/slices/authSlice";
 import { NextPageWithLayout } from "@/types";
@@ -259,7 +260,7 @@ const MyAccount: NextPageWithLayout<MyAccountPageProps> = ({ initialData }) => {
       } else {
         addToast({
           title: t("pages.myAccount.toasts.updateFailedTitle"),
-          description: res.message || "Failed to submit B2B request.",
+          description: t(res.message) || "Failed to submit B2B request.",
           color: "danger",
         });
         setInitialState();
@@ -751,7 +752,7 @@ const MyAccount: NextPageWithLayout<MyAccountPageProps> = ({ initialData }) => {
                       }
                     />
 
-                    {user?.b2b_status === "none" && (
+                    {(user?.b2b_status === "none" || user?.b2b_status === "rejected") && (
                       <div className="pt-2">
                         <Checkbox
                           isSelected={formData.is_b2b_requested}

@@ -47,6 +47,9 @@ const CheckoutSection: FC<CheckoutSectionProps> = ({ cart }) => {
   const deliveryScheduleDate = useSelector(
     (state: RootState) => state?.checkout.deliveryScheduleDate,
   );
+  const promoCode = useSelector(
+    (state: RootState) => state?.checkout.promoCode,
+  );
 
   const dispatch = useDispatch();
 
@@ -87,6 +90,15 @@ const CheckoutSection: FC<CheckoutSectionProps> = ({ cart }) => {
   const payable_amount = payment_summary.b2b_discount !== undefined && payment_summary.b2b_discount !== null
     ? payment_summary.payable_amount
     : (isB2bDiscountEligible ? Math.max(0, payment_summary.payable_amount - b2b_discount) : payment_summary.payable_amount);
+
+  useEffect(() => {
+    if (isB2bApproved && promoCode) {
+      dispatch(setPromoCode(""));
+      setTimeout(() => {
+        updateCartData(true, false);
+      }, 0);
+    }
+  }, [isB2bApproved, promoCode, dispatch]);
 
   const handleCheckoutClick = async (walletOnly = false) => {
     try {

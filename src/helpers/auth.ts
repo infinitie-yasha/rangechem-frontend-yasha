@@ -713,22 +713,38 @@ export const handleLogout = async (
       }
       const access_token = (getCookie("access_token") as string) || null;
       const fcm_token = localStorage.getItem("fcm-token") || undefined;
-      try {
-        await logoutApi(access_token, { fcm_token });
-      } catch (apiErr) {
-        console.error("Logout API error, proceeding with local logout:", apiErr);
+      
+      if (forceLogout) {
+        store.dispatch(logout());
+        deleteCookie("user");
+        deleteCookie("access_token");
+        setAnalyticsUserId("");
+        updateDataOnAuth();
+        store.dispatch(clearCart());
+        store.dispatch(clearRecentlyViewed());
       }
 
-      store.dispatch(logout());
-      deleteCookie("user");
-      deleteCookie("access_token");
+      if (access_token) {
+        if (forceLogout) {
+          logoutApi(access_token, { fcm_token }).catch(() => {});
+        } else {
+          try {
+            await logoutApi(access_token, { fcm_token });
+          } catch (apiErr) {
+            console.error("Logout API error, proceeding with local logout:", apiErr);
+          }
+        }
+      }
 
-      // Clear analytics user ID
-      setAnalyticsUserId("");
-
-      updateDataOnAuth();
-      store.dispatch(clearCart());
-      store.dispatch(clearRecentlyViewed());
+      if (!forceLogout) {
+        store.dispatch(logout());
+        deleteCookie("user");
+        deleteCookie("access_token");
+        setAnalyticsUserId("");
+        updateDataOnAuth();
+        store.dispatch(clearCart());
+        store.dispatch(clearRecentlyViewed());
+      }
 
       if (renderToast) {
         addToast({
