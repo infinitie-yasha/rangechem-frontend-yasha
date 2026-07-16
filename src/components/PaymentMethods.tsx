@@ -1,7 +1,9 @@
 import { useSettings } from "@/contexts/SettingsContext";
 import { Image, Radio, RadioGroup, ScrollShadow } from "@heroui/react";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { RootState } from "@/lib/redux/store";
 
 interface PaymentMethodsProps {
   selectedPayment: string;
@@ -18,6 +20,8 @@ const PaymentMethods: FC<PaymentMethodsProps> = ({
 }) => {
   const { t } = useTranslation();
   const { paymentSettings } = useSettings();
+  const user = useSelector((state: RootState) => state.auth.user);
+  const isB2bApproved = user?.b2b_status === "approved";
 
   const allMethods = [
     {
@@ -85,7 +89,18 @@ const PaymentMethods: FC<PaymentMethodsProps> = ({
     },
   ];
 
-  const paymentMethods = allMethods.filter((method) => method.isEnabled);
+  const paymentMethods = allMethods.filter((method) => {
+    if (isB2bApproved) {
+      return method.id === "cod";
+    }
+    return method.isEnabled;
+  });
+
+  useEffect(() => {
+    if (paymentMethods.length === 1 && selectedPayment !== paymentMethods[0].id) {
+      setSelectedPayment(paymentMethods[0].id);
+    }
+  }, [paymentMethods, selectedPayment, setSelectedPayment]);
 
   return (
     <ScrollShadow className="w-full h-full max-h-[50vh] pr-2 py-1">

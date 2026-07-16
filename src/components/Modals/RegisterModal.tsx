@@ -75,6 +75,7 @@ export const RegisterModal: FC = () => {
     password: "",
     confirmPassword: "",
     friends_code: "",
+    is_b2b_requested: false,
   });
   const [isEmailPrefilled, setIsEmailPrefilled] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({
@@ -115,6 +116,7 @@ export const RegisterModal: FC = () => {
       password: "",
       confirmPassword: "",
       friends_code: "",
+      is_b2b_requested: false,
     });
     setFieldErrors({
       email: "",
@@ -398,6 +400,7 @@ export const RegisterModal: FC = () => {
         password: password,
         password_confirmation: confirmPassword,
         friends_code: friends_code || undefined,
+        is_b2b_requested: formData.is_b2b_requested ? 1 : 0,
       },
       dispatch,
     );
@@ -459,6 +462,7 @@ export const RegisterModal: FC = () => {
           password: formData.password,
           password_confirmation: formData.confirmPassword,
           friends_code: formData.friends_code || undefined,
+          is_b2b_requested: formData.is_b2b_requested ? 1 : 0,
         },
         dispatch,
         idToken,
@@ -956,6 +960,23 @@ export const RegisterModal: FC = () => {
                           }
                           type={showConfirmPassword ? "text" : "password"}
                         />
+
+                        <Checkbox
+                          isSelected={formData.is_b2b_requested}
+                          onValueChange={(selected) =>
+                            setFormData((prev) => ({
+                              ...prev,
+                              is_b2b_requested: selected,
+                            }))
+                          }
+                          color="primary"
+                          size="sm"
+                          className="mt-1"
+                        >
+                          {t("register_modal.fields.is_b2b_requested.label", {
+                            defaultValue: "Apply for a B2B Business Account (Requires Admin Approval)",
+                          })}
+                        </Checkbox>
                       </div>
 
                       <Button
@@ -1066,17 +1087,23 @@ export const RegisterModal: FC = () => {
                     <div className="text-center space-y-4">
                       <div className="text-6xl">🎉</div>
                       <p className="text-lg font-medium">
-                        {t("register_modal.messages.account_created")}
+                        {formData.is_b2b_requested
+                          ? t("register_modal.messages.b2b_account_created", { defaultValue: "Account created successfully!" })
+                          : t("register_modal.messages.account_created")}
                       </p>
                       <p className="text-default-500">
-                        {t("register_modal.messages.start_using")}
+                        {formData.is_b2b_requested
+                          ? t("register_modal.messages.b2b_start_using", { defaultValue: "Your B2B account has been created successfully. An administrator will review and approve your application." })
+                          : t("register_modal.messages.start_using")}
                       </p>
                       <Button
                         color="primary"
                         className="w-full font-medium"
                         onPress={() => onOpenChange()}
                       >
-                        {t("register_modal.buttons.get_started")}
+                        {formData.is_b2b_requested
+                          ? t("register_modal.buttons.b2b_get_started", { defaultValue: "Close" })
+                          : t("register_modal.buttons.get_started")}
                       </Button>
                     </div>
                   </div>

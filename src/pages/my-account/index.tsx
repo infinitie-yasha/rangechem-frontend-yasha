@@ -17,6 +17,8 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
+  Alert,
+  Checkbox,
 } from "@heroui/react";
 import { FormEvent, useRef, useState, useEffect, useCallback } from "react";
 import {
@@ -114,6 +116,7 @@ const MyAccount: NextPageWithLayout<MyAccountPageProps> = ({ initialData }) => {
     iso_2: resolvedIso2,
     country: user?.country || "",
     friends_code: user?.friends_code || "",
+    is_b2b_requested: false,
   });
 
   const [hasInitialized, setHasInitialized] = useState(false);
@@ -133,6 +136,7 @@ const MyAccount: NextPageWithLayout<MyAccountPageProps> = ({ initialData }) => {
       iso_2: freshResolvedIso2,
       country: user?.country || "",
       friends_code: user?.friends_code || "",
+      is_b2b_requested: false,
     });
     setProfileImageFile(null);
   };
@@ -177,6 +181,7 @@ const MyAccount: NextPageWithLayout<MyAccountPageProps> = ({ initialData }) => {
         iso_2: freshResolvedIso2,
         country: user.country || "",
         friends_code: user.friends_code || "",
+        is_b2b_requested: false,
       });
       setHasInitialized(true);
     }
@@ -225,6 +230,53 @@ const MyAccount: NextPageWithLayout<MyAccountPageProps> = ({ initialData }) => {
     if (file) setProfileImageFile(file);
   };
 
+  const [showB2bConfirmModal, setShowB2bConfirmModal] = useState(false);
+
+  const handleConfirmB2bSubmit = async () => {
+    setShowB2bConfirmModal(false);
+    setIsLoading(true);
+    try {
+      const form = new FormData();
+      form.append("name", formData.name);
+      form.append("email", formData.email);
+      form.append("mobile", formData.mobile);
+      form.append("iso2", formData.iso_2);
+      form.append("country", formData.country);
+      if (formData.friends_code) form.append("friends_code", formData.friends_code.toString());
+      form.append("is_b2b_requested", "1");
+      if (profileImageFile) form.append("profile_image", profileImageFile);
+
+      const res = await updateUserData(form);
+      if (res.success) {
+        addToast({
+          title: "B2B Request Submitted",
+          description: "Your request is pending admin approval. You will now be logged out.",
+          color: "success",
+        });
+        setTimeout(() => {
+          handleLogout(false, true);
+        }, 1500);
+      } else {
+        addToast({
+          title: t("pages.myAccount.toasts.updateFailedTitle"),
+          description: res.message || "Failed to submit B2B request.",
+          color: "danger",
+        });
+        setInitialState();
+      }
+    } catch (error) {
+      console.error("Error submitting B2B request:", error);
+      addToast({
+        title: t("pages.myAccount.toasts.errorTitle"),
+        description: "An error occurred while submitting your B2B request.",
+        color: "danger",
+      });
+      setInitialState();
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -236,6 +288,11 @@ const MyAccount: NextPageWithLayout<MyAccountPageProps> = ({ initialData }) => {
           "Updates are not allowed in demo mode",
         color: "warning",
       });
+      return;
+    }
+
+    if (formData.is_b2b_requested) {
+      setShowB2bConfirmModal(true);
       return;
     }
 
@@ -466,6 +523,7 @@ const MyAccount: NextPageWithLayout<MyAccountPageProps> = ({ initialData }) => {
             iso_2: freshResolvedIso2,
             country: res.data.country || "",
             friends_code: res.data.friends_code || "",
+            is_b2b_requested: false,
           });
         }
         onOtpModalClose();
@@ -556,6 +614,39 @@ const MyAccount: NextPageWithLayout<MyAccountPageProps> = ({ initialData }) => {
               {t("pages.myAccount.deleteAccount")}
             </Button>
           </div>
+
+          {user?.b2b_status === "pending" && (
+            <div className="mb-4">
+              <Alert
+                color="warning"
+                variant="faded"
+                title="B2B Request Pending Approval"
+                description="Your request to become a B2B customer is pending admin approval. You will be notified once approved."
+              />
+            </div>
+          )}
+
+          {user?.b2b_status === "rejected" && (
+            <div className="mb-4">
+              <Alert
+                color="danger"
+                variant="faded"
+                title="B2B Request Rejected"
+                description="Your request to become a B2B customer was rejected. You can continue shopping as a standard customer."
+              />
+            </div>
+          )}
+
+          {user?.b2b_status === "approved" && (
+            <div className="mb-4">
+              <Alert
+                color="success"
+                variant="faded"
+                title="Approved B2B Customer Partner"
+                description={`Enjoy a ${((1 - parseFloat(user.b2b_multiplier?.toString() || "1")) * 100).toFixed(0)}% discount on all orders when your items subtotal is above KES ${parseFloat(user.b2b_min_order_amount?.toString() || "0")}.`}
+              />
+            </div>
+          )}
 
           <Card shadow="sm" className="p-2">
             <Form onSubmit={onSubmit}>
@@ -659,6 +750,21 @@ const MyAccount: NextPageWithLayout<MyAccountPageProps> = ({ initialData }) => {
                         <Calendar size={20} className="text-gray-400" />
                       }
                     />
+
+                    {user?.b2b_status === "none" && (
+                      <div className="pt-2">
+                        <Checkbox
+                          isSelected={formData.is_b2b_requested}
+                          onValueChange={(selected) =>
+                            handleInputChange("is_b2b_requested", selected)
+                          }
+                          color="primary"
+                          size="sm"
+                        >
+                          Apply to Upgrade to a B2B Business Customer Account (Pending Admin Approval)
+                        </Checkbox>
+                      </div>
+                    )}
                   </div>
 
                   <div className="flex flex-col gap-5">
@@ -879,6 +985,18 @@ const MyAccount: NextPageWithLayout<MyAccountPageProps> = ({ initialData }) => {
         alertDescription={t("pages.myAccount.alertDesc")}
         confirmText={t("pages.myAccount.confirmText")}
         variant="danger"
+      />
+
+      <ConfirmationModal
+        isOpen={showB2bConfirmModal}
+        onClose={() => setShowB2bConfirmModal(false)}
+        onConfirm={handleConfirmB2bSubmit}
+        title="Confirm B2B Account Request"
+        description="Submitting a B2B request will deactivate your account pending admin approval and automatically log you out. Do you want to proceed?"
+        alertTitle="Deactivation & Forced Logout"
+        alertDescription="You will not be able to log back in until an administrator reviews and approves your application."
+        confirmText="Request B2B Access"
+        variant="warning"
       />
 
       {/* OTP Verification Modal */}

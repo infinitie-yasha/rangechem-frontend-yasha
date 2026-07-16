@@ -22,6 +22,8 @@ const DeliveryScheduling: FC = () => {
     (state: RootState) => state?.checkout
   );
   const { cartData } = useSelector((state: RootState) => state.cart);
+  const user = useSelector((state: RootState) => state.auth.user);
+  const isB2b = user?.b2b_status === "approved";
 
   const [limitData, setLimitData] = useState<StoreSchedulingLimit | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -46,7 +48,7 @@ const DeliveryScheduling: FC = () => {
   }, []);
 
   // Generate date bounds
-  const maxDays = limitData?.max_scheduling_days || 0;
+  const maxDays = limitData?.max_scheduling_days || (isB2b ? 7 : 0);
   const cartItemsClosed = cartData?.items?.some(
     (item) => !item.store?.status?.is_open || item.store?.status?.status === "offline"
   ) || false;
@@ -75,15 +77,15 @@ const DeliveryScheduling: FC = () => {
   // Sync showing state to Redux checkout slice
   useEffect(() => {
     if (limitData) {
-      const showScheduling = maxDays > 0 && isClosed;
+      const showScheduling = (maxDays > 0 && isClosed) || isB2b;
       dispatch(setIsDeliverySchedulingShown(showScheduling));
     } else {
-      dispatch(setIsDeliverySchedulingShown(false));
+      dispatch(setIsDeliverySchedulingShown(isB2b));
     }
     return () => {
       dispatch(setIsDeliverySchedulingShown(false));
     };
-  }, [limitData, maxDays, isClosed, dispatch]);
+  }, [limitData, maxDays, isClosed, dispatch, isB2b]);
 
   const selectDate = (dateStr: string) => {
     dispatch(setDeliveryScheduleDate(dateStr));
@@ -127,7 +129,7 @@ const DeliveryScheduling: FC = () => {
   }
 
   // If scheduling is not supported, or the store is open/online, do not show the scheduling component
-  if (maxDays === 0 || !isClosed) {
+  if (maxDays === 0 || (!isClosed && !isB2b)) {
     return null;
   }
 
@@ -144,7 +146,9 @@ const DeliveryScheduling: FC = () => {
               {t("cart.scheduleDelivery.title", "Schedule Delivery")}
             </p>
             <p className="text-xxs md:text-xs text-default-500">
-              {t("cart.scheduleDelivery.closedDesc", "Store is currently closed. Choose a future delivery date.")}
+              {isB2b
+                ? t("cart.scheduleDelivery.b2bDesc", { defaultValue: "B2B orders require a scheduled delivery date." })
+                : t("cart.scheduleDelivery.closedDesc", "Store is currently closed. Choose a future delivery date.")}
             </p>
           </div>
         </div>

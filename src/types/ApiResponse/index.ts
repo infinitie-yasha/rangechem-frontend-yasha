@@ -910,6 +910,9 @@ export type userData = {
   deleted_at?: string | null;
   created_at?: string;
   updated_at?: string;
+  b2b_status?: "none" | "pending" | "approved" | "rejected" | string;
+  b2b_multiplier?: string | number | null;
+  b2b_min_order_amount?: string | number | null;
 };
 
 export type ReferralProgram = {
@@ -1200,6 +1203,9 @@ export interface PaymentSummary {
   promo_discount: number;
   promo_applied: PromoCode | [];
   promo_error: string | null;
+  b2b_discount?: number;
+  b2b_multiplier?: number | null;
+  b2b_min_order_amount?: number | null;
 }
 
 export interface Wishlist {

@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 const ExpressDelivery: React.FC = () => {
   const { selectedAddress, isDeliverySchedulingShown } = useSelector((state: RootState) => state.checkout);
   const isLoading = useSelector((state: RootState) => state.cart.isLoading);
+  const user = useSelector((state: RootState) => state.auth.user);
 
   const [isRushEnabled, setIsRushEnabled] = useState(false);
   const [isRushAvailable, setIsRushAvailable] = useState(false);
@@ -18,7 +19,7 @@ const ExpressDelivery: React.FC = () => {
 
   const dispatch = useDispatch();
 
-  if (isDeliverySchedulingShown) {
+  if (isDeliverySchedulingShown || user?.b2b_status === "approved") {
     return null;
   }
 

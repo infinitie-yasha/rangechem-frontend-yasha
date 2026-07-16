@@ -88,11 +88,23 @@ export const isValidUrl = (url: string) => {
 
 export const validateMobile = (mobile: string): string => {
   if (!mobile.trim()) return "Mobile number is required";
+  
+  if (/[a-zA-Z]/.test(mobile)) {
+    return "Mobile number cannot contain alphabets";
+  }
+  
   const digitsOnly = mobile.replace(/\D/g, "");
-  if (digitsOnly.length !== 10)
-    return "Mobile number must be exactly 10 digits";
-  if (!/^[6-9]\d{9}$/.test(digitsOnly))
-    return "Please enter a valid Indian mobile number";
+  if (digitsOnly.length < 10) {
+    return "Mobile number must be at least 10 digits";
+  }
+  if (digitsOnly.length > 10) {
+    return "Mobile number cannot be more than 10 digits";
+  }
+  
+  if (!/^\d{10}$/.test(digitsOnly)) {
+    return "Please enter a valid mobile number";
+  }
+  
   return "";
 };
 

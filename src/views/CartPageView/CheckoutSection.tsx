@@ -63,6 +63,31 @@ const CheckoutSection: FC<CheckoutSectionProps> = ({ cart }) => {
     }, 500);
   };
 
+  const user = useSelector((state: RootState) => state.auth.user);
+
+  const isB2bApproved = user?.b2b_status === "approved";
+  const userMultiplier = user?.b2b_multiplier !== undefined && user?.b2b_multiplier !== null
+    ? parseFloat(user.b2b_multiplier.toString())
+    : 1;
+  const b2bMinOrderAmount = user?.b2b_min_order_amount !== undefined && user?.b2b_min_order_amount !== null
+    ? parseFloat(user.b2b_min_order_amount.toString())
+    : 0;
+
+  const isB2bDiscountEligible = isB2bApproved && payment_summary.items_total >= b2bMinOrderAmount;
+  const discountRate = userMultiplier > 0.5 ? (1 - userMultiplier) : userMultiplier;
+
+  const b2b_discount = payment_summary.b2b_discount !== undefined && payment_summary.b2b_discount !== null
+    ? payment_summary.b2b_discount
+    : (isB2bDiscountEligible ? payment_summary.items_total * discountRate : 0);
+
+  const b2b_multiplier = payment_summary.b2b_multiplier !== undefined && payment_summary.b2b_multiplier !== null
+    ? payment_summary.b2b_multiplier
+    : (isB2bDiscountEligible ? discountRate : null);
+
+  const payable_amount = payment_summary.b2b_discount !== undefined && payment_summary.b2b_discount !== null
+    ? payment_summary.payable_amount
+    : (isB2bDiscountEligible ? Math.max(0, payment_summary.payable_amount - b2b_discount) : payment_summary.payable_amount);
+
   const handleCheckoutClick = async (walletOnly = false) => {
     try {
       if (!selectedAddress) {
@@ -116,13 +141,16 @@ const CheckoutSection: FC<CheckoutSectionProps> = ({ cart }) => {
           ? items.filter((item) => !item.store?.status?.is_open)
           : [];
 
-      if (closedStores.length > 0 && !deliveryScheduleDate) {
+      const isB2b = user?.b2b_status === "approved";
+      if ((closedStores.length > 0 || isB2b) && !deliveryScheduleDate) {
         addToast({
           title: t("checkout.noScheduleDateSelected.title", {
             defaultValue: "Delivery Date Required",
           }),
           description: t("checkout.noScheduleDateSelected.description", {
-            defaultValue: "Please select delivery date before checkout.",
+            defaultValue: isB2b 
+              ? "B2B orders require a scheduled delivery date. Please select one before checkout."
+              : "Please select delivery date before checkout.",
           }),
           color: "warning",
         });
@@ -458,6 +486,20 @@ const CheckoutSection: FC<CheckoutSectionProps> = ({ cart }) => {
               </>
             ) : null}
 
+            {b2b_discount !== undefined && b2b_discount > 0 && (
+              <div className="bg-success-50 dark:bg-success-900/10 p-3 rounded-lg border border-success-200 dark:border-success-800/30 flex justify-between items-center text-success-700 dark:text-success-400">
+                <span className="font-medium">
+                  {t("checkout.b2bDiscount", { defaultValue: "B2B Discount" })}{" "}
+                  {b2b_multiplier !== undefined && b2b_multiplier !== null && (
+                    <span>({((b2b_multiplier) * 100).toFixed(0)}%)</span>
+                  )}
+                </span>
+                <span className="font-semibold whitespace-nowrap">
+                  - {currencySymbol} {formatAmount(b2b_discount)}
+                </span>
+              </div>
+            )}
+
             {/* Wallet Section */}
             {isWalletEnabled ? (
               <div className="flex items-center justify-between">
@@ -513,7 +555,7 @@ const CheckoutSection: FC<CheckoutSectionProps> = ({ cart }) => {
                 <span>{t("checkout.totalAmount")}</span>
                 <span>
                   {currencySymbol}
-                  {formatAmount(payment_summary.payable_amount)}
+                  {formatAmount(payable_amount)}
                 </span>
               </div>
             </div>
@@ -537,7 +579,7 @@ const CheckoutSection: FC<CheckoutSectionProps> = ({ cart }) => {
                 description: "text-xs",
               }}
             />
-          ) : payment_summary.payable_amount == 0 && isWalletUse ? (
+          ) : payable_amount == 0 && isWalletUse ? (
             <Button
               className="w-full font-medium py-3 rounded-lg"
               color="primary"

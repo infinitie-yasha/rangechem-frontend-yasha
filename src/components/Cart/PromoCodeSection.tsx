@@ -25,10 +25,15 @@ const PromoCodeSection: FC = () => {
   const dispatch = useDispatch();
   const { cartData, isLoading } = useSelector((state: RootState) => state.cart);
   const { t } = useTranslation();
+  const user = useSelector((state: RootState) => state.auth.user);
 
   const { promoCode, selectedAddress } = useSelector(
     (state: RootState) => state.checkout
   );
+
+  if (user?.b2b_status === "approved") {
+    return null;
+  }
 
   const handleApplyPromoCode = async () => {
     if (!code.trim()) {

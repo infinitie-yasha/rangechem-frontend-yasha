@@ -22,6 +22,7 @@ export interface UpdateUserParams {
   country?: string;
   iso_2?: string;
   friends_code?: string | number;
+  is_b2b_requested?: boolean | number;
 }
 
 export interface RegisterUserParams {
@@ -35,6 +36,7 @@ export interface RegisterUserParams {
   friends_code?: string | number;
   referral_code?: string;
   idToken?: string;
+  is_b2b_requested?: boolean | number;
 }
 
 export interface AddBalanceParams {

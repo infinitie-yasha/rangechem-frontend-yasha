@@ -153,7 +153,21 @@ export const handleGoogleLogin = async ({
         }, 500);
       }
     } else {
-      // Handle actual failure if needed
+      let errorMessage = res.message || "Failed to login with Google. Please try again.";
+      const dbError = (res.data as any)?.error || "";
+      if (
+        typeof dbError === "string" &&
+        (dbError.includes("users_firebase_uid_unique") ||
+          dbError.includes("users_email_unique") ||
+          dbError.includes("Duplicate entry"))
+      ) {
+        errorMessage = "There is already an account with that email.";
+      }
+      addToast({
+        title: "Login Failed",
+        description: errorMessage,
+        color: "danger",
+      });
     }
   } catch (error) {
     console.error("Google login error:", error);
@@ -261,7 +275,21 @@ export const handleAppleLogin = async ({
         }, 500);
       }
     } else {
-      // Handle actual failure if needed
+      let errorMessage = res.message || "Failed to login with Apple. Please try again.";
+      const dbError = (res.data as any)?.error || "";
+      if (
+        typeof dbError === "string" &&
+        (dbError.includes("users_firebase_uid_unique") ||
+          dbError.includes("users_email_unique") ||
+          dbError.includes("Duplicate entry"))
+      ) {
+        errorMessage = "There is already an account with that email.";
+      }
+      addToast({
+        title: "Login Failed",
+        description: errorMessage,
+        color: "danger",
+      });
     }
   } catch (error) {
     console.error("Apple login error:", error);
@@ -494,6 +522,7 @@ export const handleRegisterUser = async (
     password,
     password_confirmation,
     friends_code,
+    is_b2b_requested,
   }: {
     name: string;
     email: string;
@@ -503,6 +532,7 @@ export const handleRegisterUser = async (
     password: string;
     password_confirmation: string;
     friends_code?: string | number;
+    is_b2b_requested?: boolean | number;
   },
   dispatch: AppDispatch,
   idToken?: string,
@@ -518,6 +548,7 @@ export const handleRegisterUser = async (
       password_confirmation,
       friends_code,
       idToken,
+      is_b2b_requested,
     });
 
     if (response.success) {
@@ -527,31 +558,38 @@ export const handleRegisterUser = async (
       // Clear recently viewed products — new user shouldn't see guest session history
       store.dispatch(clearRecentlyViewed());
 
-      addToast({
-        title: i18n.t("register_toast.success_title"),
-        description: i18n.t("register_toast.success_desc"),
-        color: "success",
-      });
-
-      // Attempt login immediately after registration
-      if (idToken) {
-        await handlePhoneLogin({
-          idToken,
-          dispatch,
-          name,
-          friends_code: friends_code?.toString(),
-          renderToast: false,
+      if (is_b2b_requested) {
+        addToast({
+          title: response.message || i18n.t("register_toast.success_title"),
+          color: "success",
         });
       } else {
-        await handleLoginUser(
-          {
-            email,
-            password,
+        addToast({
+          title: i18n.t("register_toast.success_title"),
+          description: i18n.t("register_toast.success_desc"),
+          color: "success",
+        });
+
+        // Attempt login immediately after registration
+        if (idToken) {
+          await handlePhoneLogin({
+            idToken,
+            dispatch,
+            name,
+            friends_code: friends_code?.toString(),
             renderToast: false,
-            mobile: mobile?.toString() || "",
-          },
-          dispatch,
-        );
+          });
+        } else {
+          await handleLoginUser(
+            {
+              email,
+              password,
+              renderToast: false,
+              mobile: mobile?.toString() || "",
+            },
+            dispatch,
+          );
+        }
       }
     } else {
       addToast({
@@ -634,7 +672,7 @@ export const handleLoginUser = async (
     } else {
       if (renderToast) {
         addToast({
-          title: i18n.t("login_modal.login_failed_toast"),
+          title: response.message || i18n.t("login_modal.login_failed_toast"),
           color: "danger",
         });
       }
@@ -675,7 +713,11 @@ export const handleLogout = async (
       }
       const access_token = (getCookie("access_token") as string) || null;
       const fcm_token = localStorage.getItem("fcm-token") || undefined;
-      await logoutApi(access_token, { fcm_token });
+      try {
+        await logoutApi(access_token, { fcm_token });
+      } catch (apiErr) {
+        console.error("Logout API error, proceeding with local logout:", apiErr);
+      }
 
       store.dispatch(logout());
       deleteCookie("user");
