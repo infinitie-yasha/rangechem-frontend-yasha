@@ -7,7 +7,7 @@ import { NextPageWithLayout } from "@/types";
 import PageHead from "@/SEO/PageHead";
 import { useTranslation } from "react-i18next";
 
-const Custom404: NextPageWithLayout = () => {
+const Custom404: NextPageWithLayout = () =>   {
   const router = useRouter();
   const { t } = useTranslation();
 
