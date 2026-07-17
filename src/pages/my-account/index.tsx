@@ -43,7 +43,6 @@ import {
   updateEmail,
   updateUserData,
   verifyOtp,
-  getOrders,
 } from "@/routes/api";
 import { isSSR } from "@/helpers/getters";
 import ConfirmationModal from "@/components/Modals/ConfirmationModal";
@@ -55,7 +54,7 @@ import {
   handlePhoneLogin,
 } from "@/helpers/auth";
 import { useDispatch, useSelector } from "react-redux";
-import { userData, Order } from "@/types/ApiResponse";
+import { userData } from "@/types/ApiResponse";
 import { RootState } from "@/lib/redux/store";
 import { setUserDataRedux } from "@/lib/redux/slices/authSlice";
 import { NextPageWithLayout } from "@/types";
