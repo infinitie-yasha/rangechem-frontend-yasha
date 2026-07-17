@@ -1,0 +1,43 @@
+[33ma9fc5de[m[33m ([m[1;31morigin/main[m[33m)[m Initial commit
+[1mdiff --git a/.gitignore b/.gitignore[m
+[1mnew file mode 100644[m
+[1mindex 0000000..45c1abc[m
+[1m--- /dev/null[m
+[1m+++ b/.gitignore[m
+[36m@@ -0,0 +1,36 @@[m
+[32m+[m[32m# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.[m
+[32m+[m
+[32m+[m[32m# dependencies[m
+[32m+[m[32m/node_modules[m
+[32m+[m[32m/.pnp[m
+[32m+[m[32m.pnp.js[m
+[32m+[m
+[32m+[m[32m# testing[m
+[32m+[m[32m/coverage[m
+[32m+[m
+[32m+[m[32m# next.js[m
+[32m+[m[32m/.next/[m
+[32m+[m[32m/out/[m
+[32m+[m
+[32m+[m[32m# production[m
+[32m+[m[32m/build[m
+[32m+[m
+[32m+[m[32m# misc[m
+[32m+[m[32m.DS_Store[m
+[32m+[m[32m*.pem[m
+[32m+[m
+[32m+[m[32m# debug[m
+[32m+[m[32mnpm-debug.log*[m
+[32m+[m[32myarn-debug.log*[m
+[32m+[m[32myarn-error.log*[m
+[32m+[m
+[32m+[m[32m# local env files[m
+[32m+[m[32m.env*.local[m
+[32m+[m[32m.env[m
+[32m+[m
+[32m+[m[32m# vercel[m
+[32m+[m[32m.vercel[m
+[32m+[m
+[32m+[m[32m# typescript[m
+[32m+[m[32m*.tsbuildinfo[m
+[32m+[m[32mnext-env.d.ts[m
