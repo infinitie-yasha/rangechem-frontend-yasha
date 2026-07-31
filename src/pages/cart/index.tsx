@@ -13,6 +13,8 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setRusDelivery } from "@/lib/redux/slices/checkoutSlice";
 
+import { updateUserDataInRedux } from "@/helpers/functionalHelpers";
+
 const CartPageView = dynamic(() => import("@/views/CartPageView"), {
   ssr: false,
 });
@@ -27,6 +29,7 @@ const CartPage: NextPageWithLayout<CartPageProps> = () => {
   useEffect(() => {
     dispatch(setRusDelivery(false));
     updateCartData(false, false, 0, false);
+    updateUserDataInRedux();
   }, [dispatch]);
 
   return (
@@ -35,7 +38,10 @@ const CartPage: NextPageWithLayout<CartPageProps> = () => {
 
       <button
         id="refetch-cart-page"
-        onClick={() => updateCartData(true, false)}
+        onClick={() => {
+          updateCartData(true, false);
+          updateUserDataInRedux();
+        }}
         className="hidden"
       />
 

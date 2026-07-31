@@ -71,7 +71,7 @@ const CheckoutSection: FC<CheckoutSectionProps> = ({ cart }) => {
   const isB2bApproved = user?.b2b_status === "approved";
   const userMultiplier = user?.b2b_multiplier !== undefined && user?.b2b_multiplier !== null
     ? parseFloat(user.b2b_multiplier.toString())
-    : 1;
+    : 0;
   const b2bMinOrderAmount = user?.b2b_min_order_amount !== undefined && user?.b2b_min_order_amount !== null
     ? parseFloat(user.b2b_min_order_amount.toString())
     : 0;
