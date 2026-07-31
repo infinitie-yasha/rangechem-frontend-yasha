@@ -77,7 +77,7 @@ const CheckoutSection: FC<CheckoutSectionProps> = ({ cart }) => {
     : 0;
 
   const isB2bDiscountEligible = isB2bApproved && payment_summary.items_total >= b2bMinOrderAmount;
-  const discountRate = userMultiplier > 0.5 ? (1 - userMultiplier) : userMultiplier;
+  const discountRate = userMultiplier;
 
   const b2b_discount = payment_summary.b2b_discount !== undefined && payment_summary.b2b_discount !== null
     ? payment_summary.b2b_discount

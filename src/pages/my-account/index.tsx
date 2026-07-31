@@ -643,7 +643,7 @@ const MyAccount: NextPageWithLayout<MyAccountPageProps> = ({ initialData }) => {
                 color="success"
                 variant="faded"
                 title="Approved B2B Customer Partner"
-                description={`Enjoy a ${((1 - parseFloat(user.b2b_multiplier?.toString() || "1")) * 100).toFixed(0)}% discount on all orders when your items subtotal is above KES ${parseFloat(user.b2b_min_order_amount?.toString() || "0")}.`}
+                description={`Enjoy a ${(parseFloat(user.b2b_multiplier?.toString() || "0") * 100).toFixed(0)}% discount on all orders when your items subtotal is above KES ${parseFloat(user.b2b_min_order_amount?.toString() || "0")}.`}
               />
             </div>
           )}
