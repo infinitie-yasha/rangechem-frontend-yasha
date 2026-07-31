@@ -181,9 +181,28 @@ const OrderSummary: FC<OrderSummaryProps> = ({ order, currencySymbol }) => {
               </div>
             </div>
           )}
+
+          {/* B2B Discount */}
+          {order.b2b_discount !== undefined && parseFloat(order.b2b_discount.toString()) > 0 && (
+            <div className="bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/30 rounded-lg p-3">
+              <div className="flex justify-between items-center">
+                <span className="text-sm font-medium text-emerald-800 dark:text-emerald-400">
+                  B2B Discount
+                  {order.b2b_multiplier !== undefined && order.b2b_multiplier !== null && (
+                    <span className="text-xs text-emerald-600 dark:text-emerald-500 ml-1">
+                      ({(parseFloat(order.b2b_multiplier.toString()) * 100).toFixed(0)}%)
+                    </span>
+                  )}
+                </span>
+                <span className="text-sm font-semibold text-emerald-600 dark:text-emerald-400">
+                  -{formatCurrency(order.b2b_discount.toString())}
+                </span>
+              </div>
+            </div>
+          )}
         </div>
 
-        {order.promo_line || hasWalletUsed ? (
+        {order.promo_line || hasWalletUsed || parseFloat(order.gift_card_discount || "0") > 0 || (order.b2b_discount !== undefined && parseFloat(order.b2b_discount.toString()) > 0) ? (
           <Divider className="my-3" />
         ) : (
           <Divider className="mb-3" />

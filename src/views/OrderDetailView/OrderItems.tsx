@@ -213,6 +213,20 @@ const OrderItems: FC<OrderItemsProps> = ({
                             </p>
                           )}
 
+                          {item.product?.is_cold_storage && (
+                            <div className="flex flex-wrap gap-1.5 mt-1 pb-1">
+                              <span className="text-blue-600 dark:text-blue-400 font-semibold text-[10px] bg-blue-50 dark:bg-blue-900/20 px-1.5 py-0.5 rounded whitespace-nowrap flex items-center gap-1">
+                                <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
+                                {t("cartItems.coldStorage", "Cold Storage")}
+                                {item.product.temp_min !== null && item.product.temp_max !== null && (
+                                  <span className="opacity-90 font-medium ml-1">
+                                    ({item.product.temp_min}°C to {item.product.temp_max}°C)
+                                  </span>
+                                )}
+                              </span>
+                            </div>
+                          )}
+
                           <div className="flex flex-wrap gap-2 items-center">
                             {item.variant?.title && (
                               <div className="text-xxs sm:text-xs text-foreground/50">

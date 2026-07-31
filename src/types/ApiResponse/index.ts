@@ -617,6 +617,9 @@ export interface Order {
   handling_charges: string | number;
   per_store_drop_off_fee: string | number;
   delivery_distance_charges: string | number;
+  b2b_discount?: string;
+  b2b_multiplier?: string | null;
+  b2b_min_order_amount?: string | null;
 
   subtotal: string;
   total_payable: string;
@@ -745,6 +748,9 @@ export interface OrderProduct {
   returnable_days: number;
   is_cancelable: boolean;
   cancelable_till: string | null;
+  is_cold_storage?: boolean;
+  temp_min?: number | null;
+  temp_max?: number | null;
 }
 
 export interface OrderVariant {
