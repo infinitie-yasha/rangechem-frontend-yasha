@@ -298,7 +298,7 @@ const ProductDetailSection: FC<ProductDetailSectionProps> = ({
           </span>
           {initialProduct.temp_min !== null && initialProduct.temp_max !== null && (
             <span className="text-foreground/70 text-xs font-semibold">
-              {t("product.temperature_range", "Store at: {{min}}°C to {{max}}°C", {
+              {t("product.temperature_range", "Store at: {{min}}°F to {{max}}°F", {
                 min: initialProduct.temp_min,
                 max: initialProduct.temp_max,
               })}

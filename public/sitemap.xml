@@ -3,85 +3,697 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rangechem.vercel.app/</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://rangechem.vercel.app/about-us/</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://rangechem.vercel.app/brands/</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://rangechem.vercel.app/categories/</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://rangechem.vercel.app/delivery-zones/</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://rangechem.vercel.app/faqs/</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://rangechem.vercel.app/feature-sections/</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://rangechem.vercel.app/privacy-policy/</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.4</priority>
   </url>
 
   <url>
     <loc>https://rangechem.vercel.app/products/</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://rangechem.vercel.app/return-refund-policy/</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.4</priority>
   </url>
 
   <url>
     <loc>https://rangechem.vercel.app/seller-register/</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://rangechem.vercel.app/shipping-policy/</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.4</priority>
   </url>
 
   <url>
     <loc>https://rangechem.vercel.app/stores/</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://rangechem.vercel.app/terms-and-conditions/</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/stores/branch-1-1/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/stores/rangechem02/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/adhesive-elastic-bandages-5cm/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/zydus-cadila-ocid-omeprazole-capsules-100-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/zydus-cadila-ocid-omeprazole-capsules-20mg-100-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/zitam-pinnacle-menofem-capsules-3x30-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/zifam-zi-q-coenzyme-q10-softgels-10-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/zenzen-sg-caps-korean-ginseng-30-capsules/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/zenvital-extra-strength-ashwagandha-capsules/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/zeman-l-carnitine-zinc-capsules-3x30-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/zecerp-cerebroprotein-hydrolysate-capsules-3x30-pack/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/zazie-black-hair-grips-250-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/yellow-infectious-waste-bin-liners-30x36/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/windmill-magnesium-citrate-tablets-400mg-60-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/weltek-omega-high-strength-softgel-capsules-30-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/weltek-getfit-dietary-supplement-capsules-30-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/wellvallens-vitamin-d3-softgel-50000-iu-8-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/wellvalens-relief-guard-mint-antacid-24-tablets/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/wellvalens-omega-3-triglycerid-softgels-30-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/wellvalens-active-magnesium-complex-tablets-30-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/wellman-original-caps-30s/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/wellbetx-berberine-vegetarian-capsules-500mg-60-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/wega-nervidoc-vitamin-soft-gel-capsules-3x30/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/webber-naturals-magnesium-bisglycinate-capsules-200mg-120-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vivadona-rekindles-the-fire-capsules-20-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/viterra-vitamin-d3-60000-iu-capsules-4-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vitamin-d3-125mcg-5000iu-capsules-100-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vital-d-vitamin-d-capsules-60000-iu-15-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vital-health-essentials-vitamin-e-capsules-400-iu-30-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vital-health-essentials-co-enzyme-q10-capsules-300mg/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vital-cal-plus-orange-effervescent-tablets-30-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vitahealth-omega-3-pure-fish-oil-60-softgels/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vitahealth-jointcare-omega-3-capsules-30-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vitagin-m-capsules-with-ginseng-30-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vitabiotics-wellwoman-omega-3-6-9-tablets-56-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vitabiotics-wellwoman-capsules-30-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vitabiotics-wellman-omega-3-6-9-caps-56-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vitabiotics-visionace-plus-capsules-56-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vitabiotics-visionace-bilberry-capsules-30-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vitabiotics-pregnacare-max-supplements-84-s/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vitabiotics-pregnacare-capsules-30-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vitabiotics-pregnacare-breastfeeding-capsules-84-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vitabiotics-jointace-omega-3-oils-capsules-30-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vitabiotics-jointace-max-supplements-84-s/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vitabiotics-jointace-glucosamine-tablets-30-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vitabiotics-jointace-collagen-tablets-30-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vitabiotics-immunace-tablets-30/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vitabiotics-immunace-immune-support-capsules/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vitabiotics-immunace-extra-protection-tablets-30-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/viridian-saw-palmetto-extract-capsules-150mg-30-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/viridian-magnesium-taurate-capsules-30-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/viridian-magnesium-bisglycinate-capsules-140mg-60-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/viridian-lions-mane-extract-capsules-400mg-30-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vichy-stress-resist-deodorant-50ml/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vichy-sensitive-deo-hypoallergenic-50ml/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vichy-liftactiv-retinol-serum-30ml/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vichy-liftactiv-collagen-specialist-night-cream-50ml/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vichy-hypoallergenic-green-deodorant-50ml/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vichy-homme-anti-transpirant-deodorant-50ml/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vichy-capital-soleil-uv-age-sscreen-spf50-40ml/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vichy-beauty-deo-alcohol-free-50ml/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/versace-dylan-blue-eau-de-toilette-100ml/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/velvex-super-absorbent-pink-cotton-wool-50g/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/velvex-super-absorbent-pink-cotton-wool-400g/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vaseline-rosy-lips-red-lip-care-48g/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vaseline-rosy-lips-pink-lip-therapy-20g/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vaseline-petroleum-jelly-skin-protectant-45g/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vaseline-original-petroleum-jelly-25g/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vaseline-lip-therapy-original-032oz/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vaseline-coconut-lip-therapy-stick-48g/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vaseline-cocoa-butter-lip-therapy-stick-48g/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vaseline-cocoa-butter-lip-care-025oz/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vaseline-cherry-lip-therapy-10ml/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vaseline-cherry-lip-therapy-stick-48g/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vaseline-blueseal-petroleum-jelly-95ml/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vaseline-blueseal-baby-jelly-240ml/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vaseline-aloe-vera-lip-therapy-48g/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/vantag-pour-homme/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/valupak-omega-3-fish-oil-capsules-1000mg-30-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/trust-studded-orange-condoms-3-pack/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/trust-ribbed-green-condoms-3-pack/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/trust-classic-smooth-condoms-3x24-pack/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/trust-classic-ribbed-condoms-green-24x3-pack/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/trust-classic-blue-condoms-24x3-pack/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/tres-orix-forte-cpsulas-20-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/toco-soft-softgel-caps-with-tocotrienol-30-capsules/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/texco-cotton-wool-200g/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/texco-cotton-wool-100g/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/sunshine-nutrition-magnesium-b6-tablets-100-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/sona-magnesium-500mg-tablets-60-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/slimsy-gummies-30s/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/shalina-hemoforce-prega-caps-30-capsules/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/seven-seas-omega-3-cod-liver-oil-capsules-60-count/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/seris-splendor-eau-de-parfum-100ml/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/sensodyne-repair-protect-whitening-75ml/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/sensodyne-repair-protect-extra-fresh-75ml/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/sensodyne-rapid-action-toothpaste-75ml/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/sensodyne-rapid-action-mint-toothpaste-30g/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/sensodyne-rapid-action-mint-toothpaste-100g/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/sensodyne-multicare-toothpaste-75ml/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/sensodyne-multi-care-toothpaste-40ml/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rangechem.vercel.app/products/sensodyne-fresh-mint-toothpaste-75ml/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
   </url>
 </urlset>

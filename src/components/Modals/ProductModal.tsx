@@ -452,7 +452,7 @@ const SimpleProductModal: FC<ProductModalProps> = ({
                     </span>
                     {product.temp_min !== null && product.temp_max !== null && (
                       <span className="text-foreground/70 text-[10px] font-semibold">
-                        {t("product.temperature_range", "Store at: {{min}}°C to {{max}}°C", {
+                        {t("product.temperature_range", "Store at: {{min}}°F to {{max}}°F", {
                           min: product.temp_min,
                           max: product.temp_max,
                         })}

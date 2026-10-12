@@ -304,7 +304,7 @@ const CartItems: FC<CartItemsProps> = ({ items = [], currencySymbol = "" }) => {
                                 {t("cartItems.coldStorage", "Cold Storage")}
                                 {item.product.temp_min !== null && item.product.temp_max !== null && (
                                   <span className="opacity-90 font-medium ml-1">
-                                    ({item.product.temp_min}°C to {item.product.temp_max}°C)
+                                    ({item.product.temp_min}°F to {item.product.temp_max}°F)
                                   </span>
                                 )}
                               </span>
